@@ -1,3 +1,4 @@
+using API.Helpers;
 using Core.Interfaces;
 using Infrastructure;
 using Infrastructure.Data;
@@ -17,10 +18,15 @@ builder.Services.AddDbContext<StoreContext> (x => x.UseSqlite(builder.Configurat
 //Interfaces to be added here
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),(typeof(GenericRepository<>)));
+builder.Services.AddAutoMapper(typeof(MappingProfiles)); 
 
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+
+//using the static files that are in wwwroot folder and are bind in the pictureUrl
+app.UseStaticFiles();
+
 
 app.MapControllers();
 // Seed the database.
