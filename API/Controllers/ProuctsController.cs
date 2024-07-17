@@ -6,15 +6,15 @@ using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using API.Errors;
 // using System;
 // using System.Collections.Generic;
 // using System.Linq;
 
 namespace API.Controllers
 {
-    [Route("api/{controller}")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    
+    public class ProductsController : BaseApiController
     {
         // public readonly IProductRepository _repository; // used for Repository Method  
         // public ProductsController(IProductRepository productRepo){
@@ -49,6 +49,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductsToReturnDto>> GetProduct(int id)
         {
 
@@ -61,7 +63,7 @@ namespace API.Controllers
 
             if (product == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse(404));
             }
 
             // Debug log

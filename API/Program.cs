@@ -1,7 +1,11 @@
+using API.Errors;
+using API.Extensions;
 using API.Helpers;
+using API.Middleware;
 using Core.Interfaces;
 using Infrastructure;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,18 +13,55 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container. //Add the services for the Interfaces
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen(); // this will not be used for now, we will use our own documetnation
+builder.Services.AddSwaggerDocumentation(); // this will be used, we will use our own documetnation
+
 
 builder.Services.AddControllers();
+//builder.Services.Configure<ApiBehaviorOptions>(options =>
+//{
+//    options.InvalidModelStateResponseFactory = actionContext => {  
+//    var errors = actionContext.ModelState.Where(e=>e.Value.Errors.Count > 0).SelectMany(x => x.Value.Errors).Select(x=>x.ErrorMessage).ToArray();
+
+//        var errorResponse = new ApiValidationErrorResponse
+//        {
+//            Errors = errors
+//        };
+
+//        return new BadRequestObjectResult(errorResponse);
+
+//    };
+//});
+
+//builder.Services.AddSwaggerGen(options => {
+//    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API", Version = "v1" });
+//    });
 
 builder.Services.AddDbContext<StoreContext> (x => x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
+builder.Services.AddApplicationServices();
 //Interfaces to be added here
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped(typeof(IGenericRepository<>),(typeof(GenericRepository<>)));
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped(typeof(IGenericRepository<>),(typeof(GenericRepository<>)));
 builder.Services.AddAutoMapper(typeof(MappingProfiles)); 
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>(); //initiate the added middle ware added customly
+
+
+
+// Configure the HTTP request pipeline. it is the middle ware
+//if (app.Environment.IsDevelopment())
+//{
+    //app.UseSwagger(); 
+    //app.UseSwaggerUI();
+//}
+
+app.UseSwaggerDocumentation();
+
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseHttpsRedirection();
 
