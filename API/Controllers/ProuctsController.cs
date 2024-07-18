@@ -35,13 +35,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductsToReturnDto>>> GetProducts()
+        public async Task<ActionResult<IReadOnlyList<ProductsToReturnDto>>> GetProducts([FromQuery] string sort)
         {
 
             //var products = await _repository.GetProductsAsync(); // this is the repository methot
             // var products = await _productRepo.ListAllAsync(); // this is the only list Generic Repository
 
-            var spec = new ProductsWithTypeAndBrandsSpecification();
+            var spec = new ProductsWithTypeAndBrandsSpecification(sort);
             var products = await _productRepo.ListAsync(spec);
 
             var productsDto = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductsToReturnDto>>(products);
