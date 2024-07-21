@@ -35,7 +35,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductsToReturnDto>>> GetProducts([FromQuery] string sort)
+        public async Task<ActionResult<IReadOnlyList<ProductsToReturnDto>>> GetProducts(string sort = "")
         {
 
             //var products = await _repository.GetProductsAsync(); // this is the repository methot

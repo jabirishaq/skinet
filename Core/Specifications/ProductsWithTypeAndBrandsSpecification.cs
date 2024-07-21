@@ -9,11 +9,11 @@ namespace Core.Specifications
 {
     public class ProductsWithTypeAndBrandsSpecification : BaseSpecification<Product>
     {   
-        public ProductsWithTypeAndBrandsSpecification(string sort) : base(null)
+        public ProductsWithTypeAndBrandsSpecification(string sort) : base(x => true) // Default criteria
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
-            AddOrderBy(x => x.Name);
+            //AddOrderBy(x => x.Name);
 
             if (!string.IsNullOrEmpty(sort))
             {
@@ -30,6 +30,10 @@ namespace Core.Specifications
                         break;
 
                 }
+            }
+            else
+            {
+                AddOrderBy(p => p.Name);
             }
         } 
 
