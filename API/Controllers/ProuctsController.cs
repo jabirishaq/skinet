@@ -38,7 +38,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<ProductsToReturnDto>>> GetProducts(string? sort,int? brandId, int? typeId)
         {
 
-            //var products = await _repository.GetProductsAsync(); // this is the repository methot
+            //var products = await _repository.GetProductsAsync(); // this is the repository method
             // var products = await _productRepo.ListAllAsync(); // this is the only list Generic Repository
 
             var spec = new ProductsWithTypeAndBrandsSpecification(sort, brandId, typeId);
