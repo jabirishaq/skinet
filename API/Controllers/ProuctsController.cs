@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using API.Errors;
+using API.Helpers;
 // using System;
 // using System.Collections.Generic;
 // using System.Linq;
@@ -35,17 +36,23 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductsToReturnDto>>> GetProducts(string? sort,int? brandId, int? typeId)
+        public async Task<ActionResult<Pagination<ProductsToReturnDto>>> GetProducts([FromQuery] ProductSpecParams productParams)
         {
 
             //var products = await _repository.GetProductsAsync(); // this is the repository method
             // var products = await _productRepo.ListAllAsync(); // this is the only list Generic Repository
 
-            var spec = new ProductsWithTypeAndBrandsSpecification(sort, brandId, typeId);
+            var spec = new ProductsWithTypeAndBrandsSpecification(productParams);
+
+            var countSpec = new ProductWithFiltersForCountSpecification(productParams);
+
+            var totalItems = await _productRepo.CountAsync(countSpec);
+
             var products = await _productRepo.ListAsync(spec);
 
-            var productsDto = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductsToReturnDto>>(products);
-            return Ok(productsDto);
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductsToReturnDto>>(products);
+            
+            return Ok(new Pagination<ProductsToReturnDto>(productParams.PageIndex, productParams.PageSize, totalItems, data));
         }
 
         [HttpGet("{id}")]
