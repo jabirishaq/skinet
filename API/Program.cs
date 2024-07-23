@@ -44,13 +44,19 @@ builder.Services.AddApplicationServices();
 //Interfaces to be added here
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddScoped(typeof(IGenericRepository<>),(typeof(GenericRepository<>)));
-builder.Services.AddAutoMapper(typeof(MappingProfiles)); 
-
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+    });
+});
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>(); //initiate the added middle ware added customly
 
-
+app.UseCors("CorsPolicy");
 
 // Configure the HTTP request pipeline. it is the middle ware
 //if (app.Environment.IsDevelopment())
@@ -60,6 +66,10 @@ app.UseMiddleware<ExceptionMiddleware>(); //initiate the added middle ware added
 //}
 
 app.UseSwaggerDocumentation();
+
+
+
+
 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
