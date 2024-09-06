@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar-collapse {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of navbar items */
+    justify-content: flex-end; /* Align to the right */
+  }
+
+  .nav-link, .btn {
+    margin-bottom: 5px; /* Add spacing when items wrap */
+  }
+
+  @media (max-width: 768px) {
+    .navbar-nav {
+      justify-content: center; /* Center items in smaller screens */
+    }
+    .nav-item {
+      margin-bottom: 10px; /* Ensure good spacing between items */
+    }
+  }
+
+  .navbar-nav .nav-link, .btn {
+    margin-right: 10px; /* Adjusts spacing between the items */
+  }
