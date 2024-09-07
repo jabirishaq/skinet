@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Learning\\skinet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{537B00D6-062C-4039-8D36-C760D0BDBBB8}|Core\\Core.csproj|e:\\learning\\skinet\\core\\specifications\\productswithtypeandbrandsspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{537B00D6-062C-4039-8D36-C760D0BDBBB8}|Core\\Core.csproj|solutionrelative:core\\specifications\\productswithtypeandbrandsspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DB8ED821-511B-4BB6-AEE8-CA3AC085797E}|API\\API.csproj|e:\\learning\\skinet\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DB8ED821-511B-4BB6-AEE8-CA3AC085797E}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{537B00D6-062C-4039-8D36-C760D0BDBBB8}|Core\\Core.csproj|e:\\learning\\skinet\\core\\specifications\\productswithtypeandbrandsspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{537B00D6-062C-4039-8D36-C760D0BDBBB8}|Core\\Core.csproj|solutionrelative:core\\specifications\\productswithtypeandbrandsspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DB8ED821-511B-4BB6-AEE8-CA3AC085797E}|API\\API.csproj|e:\\learning\\skinet\\api\\extensions\\applicationservicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,13 +54,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProductsWithTypeAndBrandsSpecification.cs",
               "DocumentMoniker": "E:\\Learning\\skinet\\Core\\Specifications\\ProductsWithTypeAndBrandsSpecification.cs",
               "RelativeDocumentMoniker": "Core\\Specifications\\ProductsWithTypeAndBrandsSpecification.cs",
               "ToolTip": "E:\\Learning\\skinet\\Core\\Specifications\\ProductsWithTypeAndBrandsSpecification.cs",
               "RelativeToolTip": "Core\\Specifications\\ProductsWithTypeAndBrandsSpecification.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAAiAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-23T07:46:35.191Z",
               "EditorCaption": ""
@@ -75,18 +75,17 @@
               "RelativeToolTip": "API\\Extensions\\ApplicationServicesExtensions.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAxwAwAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-23T07:50:29.662Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-23T07:50:29.662Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Learning\\skinet\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",
               "ToolTip": "E:\\Learning\\skinet\\API\\Program.cs",
               "RelativeToolTip": "API\\Program.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAhwDUAAAADAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAhwDcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-23T07:41:39.816Z",
               "EditorCaption": ""
