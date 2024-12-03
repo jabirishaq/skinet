@@ -5,6 +5,7 @@ import { IProduct } from './shared/models/product';
 import { IPagination } from './shared/models/pagination';
 import { CoreModule } from './core/core.module';
 import { Component, OnInit } from '@angular/core';
+import { ShopModule } from './shop/shop.module';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { Component, OnInit } from '@angular/core';
         RouterOutlet,
         HttpClientModule, // Add HttpClientModule here
         NgForOf,
-        CoreModule
+        CoreModule,
+        ShopModule
     ],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
@@ -22,18 +24,9 @@ export class AppComponent implements OnInit {
   
   title = 'Skinet';
   products: IProduct[] = [];  // Initialize products as an empty array
-  constructor(private http: HttpClient) {}
-
+  constructor() {
+    this.products = [];  // Initialize in the constructor
+  }
   ngOnInit(): void {
-    this.http.get<IPagination>('http://localhost:5126/api/products?pageSize=50').subscribe(
-      (response: IPagination) => {
-
-        this.products = response.data;
-
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 }
